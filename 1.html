@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="calculator/favicon.ico" type="image/x-icon">
-  <title>chaitanya's_1st_calculator</title>
+  <title>Vip's calculator</title>
   <style>
     #head{
       justify-content: center;
@@ -53,43 +53,52 @@
 </head>
 <body>
     <div id="head"><h1>CALCULATOR</h1></div>
-    <div id="display"><input type="text" id="k1"></div>
-    <div id="container">
-      <div id="row">
-        <div id="btns" class="btns1" onclick="visi('0')">0</div>
-        <div id="btns" class="btns1" onclick="visi('1')">1</div>
-        <div id="btns" class="btns1" onclick="visi('2')">2</div>
-        <div id="btns" class="btns1" onclick="visi('3')">3</div>
-        <div id="btns" class="btns1" onclick="visi('4')">4</div>
-      </div>
+    <form onsubmit="return false">
+        <div id="display"><input type="text" id="k1" onkeyup="document.getElementsByClassName('btns2').click()"></div>
+        <div id="container">
+            <div id="row">
+                <div id="btns" class="btns1" onclick="visi('0')">0</div>
+                <div id="btns" class="btns1" onclick="visi('1')">1</div>
+                <div id="btns" class="btns1" onclick="visi('2')">2</div>
+                <div id="btns" class="btns1" onclick="visi('3')">3</div>
+                <div id="btns" class="btns1" onclick="visi('4')">4</div>
+            </div>
   
-      <div id="row">
-        <div id="btns" class="btns1" onclick="visi('5')">5</div>
-        <div id="btns" class="btns1" onclick="visi('6')">6</div>
-        <div id="btns" class="btns1" onclick="visi('7')">7</div>
-        <div id="btns" class="btns1" onclick="visi('8')">8</div>
-        <div id="btns" class="btns1" onclick="visi('9')">9</div>
-      </div>
+            <div id="row">
+                <div id="btns" class="btns1" onclick="visi('5')">5</div>
+                <div id="btns" class="btns1" onclick="visi('6')">6</div>
+                <div id="btns" class="btns1" onclick="visi('7')">7</div>
+                <div id="btns" class="btns1" onclick="visi('8')">8</div>
+                <div id="btns" class="btns1" onclick="visi('9')">9</div>
+            </div>
   
-      <div id="row">
-        <div id="btns" class="btns1" onclick="visi('+')">+</div>
-        <div id="btns" class="btns1" onclick="visi('-')">-</div>
-        <div id="btns" class="btns1" onclick="visi('*')">X</div>
-        <div id="btns" class="btns1" onclick="visi('/')">/</div>
-        <div id="btns" class="btns1" onclick="visi('%')">%</div>
-      </div>
-      <div id="row">
-        <div id="btns" class="btns1" onclick="visi('(')">(</div>
-        <div id="btns" class="btns1" onclick="visi(')')">)</div>
-        <div id="btns" class="btns3" onclick="clr()">C</div>
-        <div id="btns" class="btns1" onclick="visi('.')">.</div>
-        <div id="btns" class="btns2" onclick="eva()">=</div>
-      </div>
-      
-    </div>
+            <div id="row">
+                <div id="btns" class="btns1" onclick="visi('+')">+</div>
+                <div id="btns" class="btns1" onclick="visi('-')">-</div>
+                <div id="btns" class="btns1" onclick="visi('*')">X</div>
+                <div id="btns" class="btns1" onclick="visi('/')">/</div>
+                <div id="btns" class="btns1" onclick="visi('%')">%</div>
+            </div>
+            <div id="row">
+                <div id="btns" class="btns1" onclick="visi('(')">(</div>
+                <div id="btns" class="btns1" onclick="visi(')')">)</div>
+                <div id="btns" class="btns3" onclick="clr()">C</div>
+                <div id="btns" class="btns1" onclick="visi('.')">.</div>
+                <button type="submit" id="btns" class="btns2" onclick="eva()"><div>=</div></button>
+            </div>
+        </div>
+    </form>
     <script>
+        
       let x = document.getElementById('k1');
       console.log(dis);
+      x.addEventListener("keypress",function(event){
+        if(event.key==="Enter")
+        {
+          event.preventDefault();
+          document.getElementsByClassName('btns2').click();
+        }
+      })
       function visi(val){
         x.value = x.value + val;
       }
@@ -99,10 +108,11 @@
       function eva(){
         try{
           x.value = eval(x.value);
+          return x.value;
         }
         catch(er){
           x.value = "Syntax Error!";
-          
+          return x.value;
         }
       }
       function xes(){
