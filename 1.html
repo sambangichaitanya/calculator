@@ -16,9 +16,9 @@
       text-align: center;
     }
     #k1{
-      width:250px;
+      width:270px;
       padding:20px;
-      border:2px solid black;
+      border:2px solid brown;
       border-radius:20px;
     }
     #btns{
@@ -44,18 +44,37 @@
       background-color: red;
     }
     .btns4:hover{
-      background-color: red;
+      background-color: rgb(17, 14, 125);
     }
     .btns4{
       width:96px;
+    }
+    .btns2{
+      width:120px;
+    }
+    .btns5:hover{
+      background-color: red;
+    }
+    .btns5{
+      width:10px;
+    }
+    .btns3{
+      width:10px;
     }
   </style>
 </head>
 <body>
     <div id="head"><h1>CALCULATOR</h1></div>
     <form onsubmit="return false">
-        <div id="display"><input type="text" id="k1" onkeyup="document.getElementsByClassName('btns2').click()"></div>
+        <div id="display"><input placeholder="enter an expression"  type="text" id="k1" onkeyup="document.getElementsByClassName('btns2').click()"></div>
         <div id="container">
+            <div id="row">
+              <div id="btns" class="btns3" onclick="clr()">C</div>
+              <div id="btns" class="btns1" onclick="visi('+')">+</div>
+              <div id="btns" class="btns1" onclick="visi('-')">-</div>
+              <div id="btns" class="btns1" onclick="visi('%')">%</div>
+              <div id="btns" class="btns3" onclick="back()">⌫</div>
+            </div>
             <div id="row">
                 <div id="btns" class="btns1" onclick="visi('0')">0</div>
                 <div id="btns" class="btns1" onclick="visi('1')">1</div>
@@ -73,16 +92,8 @@
             </div>
   
             <div id="row">
-                <div id="btns" class="btns1" onclick="visi('+')">+</div>
-                <div id="btns" class="btns1" onclick="visi('-')">-</div>
-                <div id="btns" class="btns1" onclick="visi('*')">X</div>
+                <div id="btns" class="btns1" onclick="visi('*')">x</div>
                 <div id="btns" class="btns1" onclick="visi('/')">/</div>
-                <div id="btns" class="btns1" onclick="visi('%')">%</div>
-            </div>
-            <div id="row">
-                <div id="btns" class="btns1" onclick="visi('(')">(</div>
-                <div id="btns" class="btns1" onclick="visi(')')">)</div>
-                <div id="btns" class="btns3" onclick="clr()">C</div>
                 <div id="btns" class="btns1" onclick="visi('.')">.</div>
                 <button type="submit" id="btns" class="btns2" onclick="eva()"><div>=</div></button>
             </div>
@@ -98,7 +109,11 @@
           event.preventDefault();
           document.getElementsByClassName('btns2').click();
         }
-      })
+      });
+      function back()
+      {
+        x.value = x.value.slice(0,x.value.length-1);
+      }
       function visi(val){
         x.value = x.value + val;
       }
